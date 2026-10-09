@@ -406,44 +406,77 @@
       justify-content: center;
     }
 
+    /* Hand-drawn look: the outline, fill and shadow live on a pseudo-element
+       that is wobbled by an SVG displacement filter (#rough). */
     .pill {
       --pill: var(--pink);
+      position: relative;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 8px 20px 8px 8px;
-      border: 2px solid var(--pop);
-      border-radius: 999px;
-      background: var(--surface);
+      gap: 12px;
+      padding: 10px 26px 10px 12px;
+      border: 0;
+      background: none;
       color: var(--heading);
-      box-shadow: 4px 4px 0 var(--pill);
-      font: inherit;
+      font-family: var(--font-hand);
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 1.55rem;
+      line-height: 1;
       cursor: pointer;
-      transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+      isolation: isolate;
+      transition: transform 0.2s ease, color 0.2s ease;
     }
 
-    .pill:nth-child(1) { transform: rotate(-2deg); }
+    .pill::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: var(--surface);
+      border: 3px solid var(--pop);
+      border-radius: 999px;
+      box-shadow: 5px 5px 0 var(--pill);
+      filter: url(#rough);
+      transition: background-color 0.2s ease;
+    }
+
+    .pill:nth-child(1) { transform: rotate(-2.5deg); }
     .pill:nth-child(2) { transform: rotate(1.5deg); }
     .pill:nth-child(3) { transform: rotate(-1deg); }
 
     .pill .pill-icon {
+      position: relative;
       display: grid;
       place-items: center;
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      background: var(--pill);
+      width: 46px; height: 46px;
       color: var(--white);
+      isolation: isolate;
     }
 
+    .pill .pill-icon::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: var(--pill);
+      border: 2.5px solid var(--pop);
+      border-radius: 54% 46% 50% 50% / 48% 54% 46% 52%;
+      filter: url(#rough);
+    }
+
+    .pill .pill-icon svg { filter: url(#rough-light); }
+    .pill .label { padding-top: 2px; }
+
     .pill:hover { transform: rotate(0) translateY(-3px); }
-    .pill[aria-pressed="true"] { background: var(--pill); color: var(--white); transform: rotate(0); }
-    .pill[aria-pressed="true"] .pill-icon { background: var(--white); color: var(--pill); }
+    .pill[aria-pressed="true"] { transform: rotate(0); }
+    .pill[aria-pressed="true"]::before { background: var(--pill); }
+    .pill[aria-pressed="true"] .pill-icon::before { background: var(--white); }
+    .pill[aria-pressed="true"] .pill-icon { color: var(--navy); }
 
     .pill--property { --pill: var(--pink); }
     .pill--ai { --pill: var(--orange); }
     .pill--investment { --pill: var(--coral); }
+    .pill--property[aria-pressed="true"] { color: var(--white); }
     .pill--ai[aria-pressed="true"], .pill--investment[aria-pressed="true"] { color: var(--navy); }
 
     /* ---------- Category tags ---------- */
@@ -602,20 +635,20 @@
       color: var(--white);
       border: 2px solid var(--pop);
       border-radius: 48px 18px 48px 18px;
-      box-shadow: 10px 10px 0 var(--orange);
-      padding: 56px 24px;
+      box-shadow: 6px 6px 0 var(--orange);
+      padding: 28px 22px 32px;
       text-align: center;
     }
 
     .connect .sparkle { color: var(--white); }
-    .connect .c1 { width: 36px; top: 24px; left: 24px; }
-    .connect .c2 { width: 22px; top: 70px; left: 70px; color: var(--orange); }
-    .connect .c3 { width: 30px; bottom: 28px; right: 30px; }
-    .connect .c4 { width: 18px; bottom: 72px; right: 80px; color: var(--navy); }
+    .connect .c1 { width: 30px; top: 16px; left: 20px; }
+    .connect .c2 { width: 18px; top: 52px; left: 56px; color: var(--orange); }
+    .connect .c3 { width: 26px; bottom: 18px; right: 24px; }
+    .connect .c4 { width: 16px; bottom: 54px; right: 62px; color: var(--navy); }
 
-    .connect .eyebrow { color: var(--white); font-size: 1.8rem; }
-    .connect h2 { color: var(--white); font-size: clamp(2.2rem, 7vw, 3.4rem); font-weight: 900; }
-    .connect p { max-width: 34em; margin: 0 auto 30px; font-size: 1.12rem; }
+    .connect .eyebrow { color: var(--white); font-size: 1.5rem; }
+    .connect h2 { color: var(--white); font-size: clamp(1.8rem, 5vw, 2.4rem); font-weight: 900; margin-bottom: 0.3em; }
+    .connect p { max-width: 32em; margin: 0 auto 20px; font-size: 1rem; line-height: 1.55; }
     .connect a.email { color: var(--white); font-weight: 700; }
 
     .social-list {
@@ -656,7 +689,7 @@
     .social-link span { text-align: left; line-height: 1.25; }
     .social-link:hover { transform: translate(-2px, -2px) rotate(-1.5deg); box-shadow: 6px 6px 0 var(--navy); }
 
-    @media (min-width: 768px) { .connect { padding: 80px 48px; } }
+    @media (min-width: 768px) { .connect { padding: 34px 48px 38px; max-width: 760px; margin: 0 auto; } }
 
     /* ---------- About ---------- */
     .about-top {
@@ -846,6 +879,16 @@
   <!-- SVG icon sprite: referenced below with <use href="#icon-..."> -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
+      <!-- Wobble filters that make flat shapes look hand-drawn -->
+      <filter id="rough" x="-5%" y="-10%" width="110%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <filter id="rough-light">
+        <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="1" seed="3" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+
       <!-- Four-point sparkle, matching the logo -->
       <symbol id="icon-sparkle" viewBox="0 0 24 24">
         <path fill="currentColor" d="M12 0C12.9 7.2 16.8 11.1 24 12 16.8 12.9 12.9 16.8 12 24 11.1 16.8 7.2 12.9 0 12 7.2 11.1 11.1 7.2 12 0Z"/>
@@ -1000,15 +1043,15 @@
         <div class="pill-row">
           <button class="pill pill--property" type="button" data-filter="property" aria-pressed="false">
             <span class="pill-icon"><svg width="22" height="22" aria-hidden="true"><use href="#icon-property"/></svg></span>
-            Property Development
+            <span class="label">Property Development</span>
           </button>
           <button class="pill pill--ai" type="button" data-filter="ai" aria-pressed="false">
             <span class="pill-icon"><svg width="22" height="22" aria-hidden="true"><use href="#icon-ai"/></svg></span>
-            AI in Property
+            <span class="label">AI in Property</span>
           </button>
           <button class="pill pill--investment" type="button" data-filter="investment" aria-pressed="false">
             <span class="pill-icon"><svg width="22" height="22" aria-hidden="true"><use href="#icon-investment"/></svg></span>
-            Investment Journey
+            <span class="label">Investment Journey</span>
           </button>
         </div>
       </div>
@@ -1175,6 +1218,10 @@
             <p>
               It's also where I share how my curiosity about AI has grown over time, and the positive influence
               I believe it's having on property.
+            </p>
+            <p>
+              And I'm not only curious about AI for myself. I'm curious about how it can change the property
+              sector as a whole.
             </p>
           </div>
         </div>
