@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Girl AI'm Just Curious</title>
+  <meta name="description" content="Property development, AI in property and my investment journey. A blog by Victry.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMTAwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjEwMCI+PHRleHQgeD0iMTIwIiB5PSI1OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IlBsYXlmYWlyIERpc3BsYXksIEdlb3JnaWEsICdUaW1lcyBOZXcgUm9tYW4nLCBzZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSI1OCIgbGV0dGVyLXNwYWNpbmc9IjIiIGZpbGw9IiNFNTAwN0QiPkdJUkw8L3RleHQ+PHRleHQgeD0iMTIwIiB5PSI4NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkRNIFNhbnMsIEhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMTQiIGxldHRlci1zcGFjaW5nPSIzLjIiIGZpbGw9IiNGNTkyMUIiPkFJJ00gSlVTVCBDVVJJT1VTPC90ZXh0PjxwYXRoIGQ9Ik0yMDYgOCBMMjA5IDE4IEwyMTkgMjEgTDIwOSAyNCBMMjA2IDM0IEwyMDMgMjQgTDE5MyAyMSBMMjAzIDE4IFoiIGZpbGw9IiNGNTkyMUIiLz48cGF0aCBkPSJNMjIyIDM0IEwyMjMuNSAzOC41IEwyMjggNDAgTDIyMy41IDQxLjUgTDIyMiA0NiBMMjIwLjUgNDEuNSBMMjE2IDQwIEwyMjAuNSAzOC41IFoiIGZpbGw9IiNFNTAwN0QiLz48L3N2Zz4K">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- Design tokens ---------- */
+    :root {
+      --pink: #E5007D;
+      --orange: #F5921B;
+      --coral: #FF6B4A;
+      --navy: #0B1F4A;
+      --cream: #FAF6F1;
+      --dark: #1A1A2E;
+      --white: #FFFFFF;
+
+      --bg: var(--cream);
+      --surface: var(--white);
+      --text: var(--navy);
+      --text-muted: #46546F;
+      --heading: var(--navy);
+      --border: #E8DFD4;
+      --footer-bg: var(--navy);
+      --shadow: 0 1px 2px rgba(11, 31, 74, 0.06), 0 8px 24px rgba(11, 31, 74, 0.06);
+
+      --font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
+      --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+
+      --radius: 14px;
+      --gutter: 16px;
+      --max: 1120px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: var(--dark);
+        --surface: #24243C;
+        --text: #F2ECE4;
+        --text-muted: #B9B4C6;
+        --heading: var(--cream);
+        --border: #34344F;
+        --footer-bg: var(--navy);
+        --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: var(--dark);
+      --surface: #24243C;
+      --text: #F2ECE4;
+      --text-muted: #B9B4C6;
+      --heading: var(--cream);
+      --border: #34344F;
+      --footer-bg: var(--navy);
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    /* ---------- Base ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      color: var(--heading);
+      line-height: 1.15;
+      margin: 0 0 0.5em;
+    }
+
+    p { margin: 0 0 1em; }
+    a { color: var(--pink); }
+    img, svg { display: block; max-width: 100%; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .section { padding: 56px 0; }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 10px;
+    }
+
+    .section-title { font-size: clamp(1.9rem, 5vw, 2.6rem); }
+
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px; height: 1px;
+      overflow: hidden; clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
+
+    /* ---------- Nav ---------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 84px;
+    }
+
+    .logo img { height: 62px; width: auto; }
+
+    .nav-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px; height: 44px;
+      padding: 0;
+      background: none;
+      border: 2px solid var(--heading);
+      border-radius: 10px;
+      color: var(--heading);
+      cursor: pointer;
+    }
+
+    .nav-toggle .bar { transition: transform 0.2s ease, opacity 0.2s ease; transform-origin: center; }
+    .nav-toggle[aria-expanded="true"] .bar-1 { transform: translateY(6px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] .bar-2 { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] .bar-3 { transform: translateY(-6px) rotate(-45deg); }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      left: 0; right: 0; top: 100%;
+      margin: 0;
+      padding: 8px var(--gutter) 20px;
+      list-style: none;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links.is-open { display: block; }
+
+    .nav-links a {
+      display: block;
+      padding: 12px 0;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--heading);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--coral); }
+
+    @media (min-width: 768px) {
+      .nav-toggle { display: none; }
+      .nav-links {
+        display: flex;
+        gap: 32px;
+        position: static;
+        padding: 0;
+        background: none;
+        border: 0;
+      }
+      .nav-links a { padding: 6px 0; position: relative; }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0; right: 0; bottom: 0;
+        height: 3px;
+        background: var(--pink);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.2s ease;
+      }
+      .nav-links a:hover::after { transform: scaleX(1); }
+    }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 48px 0 32px; }
+
+    .hero-grid {
+      display: grid;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero-photo {
+      position: relative;
+      width: min(300px, 78vw);
+      aspect-ratio: 1;
+      margin: 0 auto;
+    }
+
+    .hero-photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: var(--orange);
+      transform: translate(14px, 14px);
+    }
+
+    .hero-photo .photo {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 6px solid var(--pink);
+      background: var(--surface);
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+
+    .hero-photo .photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .photo-placeholder {
+      font-family: var(--font-heading);
+      font-size: 6rem;
+      font-weight: 900;
+      color: var(--pink);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 9vw, 4.4rem);
+      font-weight: 900;
+      letter-spacing: -0.01em;
+    }
+
+    .hero h1 .name { color: var(--pink); font-style: italic; }
+
+    .hero .lead {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 34em;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-primary { background: var(--pink); color: var(--white); }
+    .btn-primary:hover { background: var(--coral); transform: translateY(-2px); }
+
+    .btn-outline { border: 2px solid var(--heading); color: var(--heading); }
+    .btn-outline:hover { border-color: var(--coral); color: var(--coral); }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+
+    @media (min-width: 768px) {
+      .hero { padding: 80px 0 56px; }
+      .hero-grid { grid-template-columns: 5fr 7fr; gap: 64px; }
+      .hero-photo { width: 100%; max-width: 360px; }
+    }
+
+    /* ---------- Category pills ---------- */
+    .categories { padding: 16px 0 8px; }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .pill {
+      --pill: var(--pink);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px 10px 12px;
+      border: 2px solid var(--pill);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--heading);
+      font: inherit;
+      font-weight: 700;
+      font-size: 0.98rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .pill .pill-icon {
+      display: grid;
+      place-items: center;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--pill);
+      color: var(--white);
+    }
+
+    .pill:hover, .pill[aria-pressed="true"] { background: var(--pill); color: var(--white); }
+    .pill:hover .pill-icon, .pill[aria-pressed="true"] .pill-icon { background: var(--white); color: var(--pill); }
+
+    .pill--property { --pill: var(--pink); }
+    .pill--ai { --pill: var(--orange); }
+    .pill--investment { --pill: var(--coral); }
+
+    /* ---------- Category tags ---------- */
+    .tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--pink);
+    }
+
+    .tag--ai { background: var(--orange); color: var(--navy); }
+    .tag--investment { background: var(--coral); color: var(--navy); }
+
+    /* ---------- Featured post ---------- */
+    .featured {
+      display: grid;
+      gap: 12px;
+      padding: 32px 24px;
+      background: var(--surface);
+      border-left: 8px solid var(--orange);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .featured .label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .featured h2 { font-size: clamp(1.8rem, 5vw, 2.8rem); margin: 4px 0 0; }
+    .featured p { color: var(--text-muted); font-size: 1.1rem; max-width: 46em; margin: 0; }
+
+    .meta { font-size: 0.9rem; color: var(--text-muted); }
+
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      color: var(--pink);
+      text-decoration: none;
+    }
+
+    .read-more svg { transition: transform 0.2s ease; }
+    .read-more:hover { color: var(--coral); }
+    .read-more:hover svg { transform: translateX(4px); }
+
+    @media (min-width: 768px) {
+      .featured { padding: 48px 56px; }
+    }
+
+    /* ---------- Blog grid ---------- */
+    .section-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .filter-status { font-size: 0.95rem; color: var(--text-muted); margin: 0; }
+
+    .filter-clear {
+      background: none;
+      border: 0;
+      padding: 0;
+      font: inherit;
+      font-weight: 700;
+      color: var(--pink);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .post-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 640px) { .post-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .post-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .post-card {
+      --stripe: var(--pink);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 28px 24px 24px;
+      background: var(--surface);
+      border-top: 6px solid var(--stripe);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease;
+    }
+
+    .post-card:hover { transform: translateY(-4px); }
+    .post-card[hidden] { display: none; }
+
+    .post-card[data-category="ai"] { --stripe: var(--orange); }
+    .post-card[data-category="investment"] { --stripe: var(--coral); }
+
+    .post-card h3 { font-size: 1.4rem; margin: 0; }
+    .post-card p { color: var(--text-muted); margin: 0; flex: 1; }
+
+    .post-card .card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ---------- Let's Connect ---------- */
+    .connect {
+      background: var(--pink);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .connect h2 { color: var(--white); font-size: clamp(2rem, 6vw, 3rem); }
+    .connect p { max-width: 36em; margin: 0 auto 28px; font-size: 1.1rem; }
+    .connect a.email { color: var(--white); font-weight: 700; }
+
+    .social-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .social-list a {
+      display: grid;
+      place-items: center;
+      width: 56px; height: 56px;
+      border: 2px solid var(--white);
+      border-radius: 50%;
+      color: var(--white);
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .social-list a:hover { background: var(--white); color: var(--pink); }
+
+    @media (min-width: 768px) { .connect { padding: 72px 48px; } }
+
+    /* ---------- About ---------- */
+    .about-intro { max-width: 40em; margin-bottom: 32px; color: var(--text-muted); font-size: 1.1rem; }
+
+    .about-grid { display: grid; gap: 24px; }
+
+    @media (min-width: 768px) { .about-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+
+    .about-col {
+      padding: 32px 28px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .about-col h3 { font-size: 1.7rem; display: flex; align-items: center; gap: 12px; }
+    .about-col h3::before {
+      content: "";
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--pink);
+      flex: none;
+    }
+    .about-col--person h3::before { background: var(--orange); }
+
+    .about-col ul { margin: 0; padding: 0; list-style: none; }
+    .about-col li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 10px;
+    }
+    .about-col li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0.65em;
+      width: 8px; height: 8px;
+      background: var(--coral);
+      transform: rotate(45deg);
+    }
+
+    /* ---------- Footer ---------- */
+    .site-footer {
+      margin-top: 56px;
+      padding: 40px 0;
+      background: var(--footer-bg);
+      color: var(--white);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.3rem;
+    }
+
+    .footer-brand span { color: var(--orange); }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 24px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .footer-links a { color: var(--white); text-decoration: none; font-weight: 500; }
+    .footer-links a:hover { color: var(--orange); }
+
+    .copyright { margin: 0; font-size: 0.9rem; color: rgba(255, 255, 255, 0.75); }
+
+    @media (min-width: 768px) {
+      .footer-inner { flex-direction: row; justify-content: space-between; text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SVG icon sprite: referenced below with <use href="#icon-..."> -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <!-- Property Development: crane over a building -->
+      <symbol id="icon-property" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 22V3"/>
+        <path d="M2 5h20"/>
+        <path d="M5 3l4 2"/>
+        <path d="M18 5v4"/>
+        <path d="M16.5 9h3"/>
+        <rect x="11" y="13" width="9" height="9"/>
+        <path d="M14 16h1M16.5 16h1M14 19h1M16.5 19h1"/>
+        <path d="M2 22h20"/>
+      </symbol>
+
+      <!-- AI in Property: brain with circuit nodes -->
+      <symbol id="icon-ai" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 4.5A3 3 0 0 0 6.2 5.6 3 3 0 0 0 4 9.4a3 3 0 0 0 .6 4.8A3 3 0 0 0 7 18.6a3 3 0 0 0 5 1.1z"/>
+        <path d="M12 4.5v15.2"/>
+        <path d="M12 8h4"/>
+        <path d="M12 12h6"/>
+        <path d="M12 16h4"/>
+        <circle cx="17.5" cy="8" r="1.5"/>
+        <circle cx="19.5" cy="12" r="1.5"/>
+        <circle cx="17.5" cy="16" r="1.5"/>
+      </symbol>
+
+      <!-- Investment Journey: bars with rising arrow -->
+      <symbol id="icon-investment" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 21h18"/>
+        <path d="M5 21v-5"/>
+        <path d="M10 21v-8"/>
+        <path d="M15 21v-6"/>
+        <path d="M20 21v-10"/>
+        <path d="M4 11l5-5 4 3 7-6"/>
+        <path d="M16 3h4v4"/>
+      </symbol>
+
+      <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"/>
+        <path d="M13 6l6 6-6 6"/>
+      </symbol>
+
+      <symbol id="icon-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.3" cy="6.7" r="0.6" fill="currentColor"/>
+      </symbol>
+
+      <symbol id="icon-linkedin" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.83v1.54h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-4.98c0-1.19-.02-2.72-1.66-2.72-1.66 0-1.91 1.3-1.91 2.63V21h-4z"/>
+      </symbol>
+
+      <symbol id="icon-tiktok" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M16.6 3c.3 2.2 1.7 3.8 4 4v3.2c-1.5.1-2.8-.4-4-1.2v6.3c0 3.6-2.6 5.7-5.6 5.7A5.4 5.4 0 0 1 5.6 15.6c0-3.4 3-5.9 6.6-5.3v3.3c-1.6-.4-3.3.6-3.3 2.2 0 1.4 1 2.3 2.2 2.3 1.4 0 2.3-.9 2.3-2.6V3z"/>
+      </symbol>
+
+      <symbol id="icon-youtube" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M22.5 7.2a2.8 2.8 0 0 0-2-2C18.8 4.7 12 4.7 12 4.7s-6.8 0-8.5.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 4.8 2.8 2.8 0 0 0 2 2c1.7.5 8.5.5 8.5.5s6.8 0 8.5-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-4.8zM9.8 15.1V8.9l5.6 3.1z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main">
+      <a class="logo" href="#home" aria-label="Girl AI'm Just Curious, back to top">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMTAwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjEwMCI+PHRleHQgeD0iMTIwIiB5PSI1OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IlBsYXlmYWlyIERpc3BsYXksIEdlb3JnaWEsICdUaW1lcyBOZXcgUm9tYW4nLCBzZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSI1OCIgbGV0dGVyLXNwYWNpbmc9IjIiIGZpbGw9IiNFNTAwN0QiPkdJUkw8L3RleHQ+PHRleHQgeD0iMTIwIiB5PSI4NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkRNIFNhbnMsIEhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMTQiIGxldHRlci1zcGFjaW5nPSIzLjIiIGZpbGw9IiNGNTkyMUIiPkFJJ00gSlVTVCBDVVJJT1VTPC90ZXh0PjxwYXRoIGQ9Ik0yMDYgOCBMMjA5IDE4IEwyMTkgMjEgTDIwOSAyNCBMMjA2IDM0IEwyMDMgMjQgTDE5MyAyMSBMMjAzIDE4IFoiIGZpbGw9IiNGNTkyMUIiLz48cGF0aCBkPSJNMjIyIDM0IEwyMjMuNSAzOC41IEwyMjggNDAgTDIyMy41IDQxLjUgTDIyMiA0NiBMMjIwLjUgNDEuNSBMMjE2IDQwIEwyMjAuNSAzOC41IFoiIGZpbGw9IiNFNTAwN0QiLz48L3N2Zz4K" alt="Girl AI'm Just Curious" width="149" height="62">
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        <span class="visually-hidden">Menu</span>
+        <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+          <rect class="bar bar-1" x="2" y="4" width="18" height="2.4" rx="1.2" fill="currentColor"/>
+          <rect class="bar bar-2" x="2" y="10" width="18" height="2.4" rx="1.2" fill="currentColor"/>
+          <rect class="bar bar-3" x="2" y="16" width="18" height="2.4" rx="1.2" fill="currentColor"/>
+        </svg>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-photo">
+          <div class="photo">
+            <!-- To add your photo, replace the span below with:
+                 <img src="your-photo.jpg" alt="Victry smiling"> -->
+            <span class="photo-placeholder" aria-hidden="true">V</span>
+          </div>
+        </div>
+
+        <div class="hero-copy">
+          <span class="eyebrow">Property. AI. Curiosity.</span>
+          <h1>Hey, I'm <span class="name">Victry</span></h1>
+          <p class="lead">
+            I'm a property developer and investor who can't stop asking "what if?". This is where I share
+            the real story: the renovations, the planning headaches, the AI tools that are changing how I
+            work, and every step of building my first investment portfolio.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#blog">Read the blog
+              <svg width="18" height="18" aria-hidden="true"><use href="#icon-arrow"/></svg>
+            </a>
+            <a class="btn btn-outline" href="#about">About me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CATEGORY PILLS ===================== -->
+    <section class="categories" aria-label="Blog categories">
+      <div class="container">
+        <div class="pill-row">
+          <button class="pill pill--property" type="button" data-filter="property" aria-pressed="false">
+            <span class="pill-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-property"/></svg></span>
+            Property Development
+          </button>
+          <button class="pill pill--ai" type="button" data-filter="ai" aria-pressed="false">
+            <span class="pill-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-ai"/></svg></span>
+            AI in Property
+          </button>
+          <button class="pill pill--investment" type="button" data-filter="investment" aria-pressed="false">
+            <span class="pill-icon"><svg width="20" height="20" aria-hidden="true"><use href="#icon-investment"/></svg></span>
+            Investment Journey
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURED POST ===================== -->
+    <section class="section" aria-labelledby="featured-title">
+      <div class="container">
+        <article class="featured">
+          <span class="label">Featured post</span>
+          <div><span class="tag tag--investment">Investment Journey</span></div>
+          <h2 id="featured-title">I Bought My First Investment Property. Here's Everything Nobody Told Me.</h2>
+          <p>
+            From the first viewing to getting the keys, this is the honest breakdown: the numbers I ran,
+            the mistakes I nearly made, the people who helped, and the moment I realised I'd actually done it.
+          </p>
+          <span class="meta">8 min read</span>
+          <a class="read-more" href="#">Read More
+            <svg width="18" height="18" aria-hidden="true"><use href="#icon-arrow"/></svg>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== BLOG GRID ===================== -->
+    <section class="section" id="blog" aria-labelledby="blog-title" style="padding-top:0">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Latest posts</span>
+            <h2 class="section-title" id="blog-title">From the blog</h2>
+          </div>
+          <p class="filter-status" aria-live="polite" hidden>
+            Showing <strong data-filter-name></strong> posts.
+            <button class="filter-clear" type="button">Show all</button>
+          </p>
+        </div>
+
+        <div class="post-grid">
+          <!-- To add a post, copy one <article> block and change data-category to
+               property, ai or investment (this sets the stripe colour and filtering). -->
+
+          <article class="post-card" data-category="property">
+            <div><span class="tag">Property Development</span></div>
+            <h3>Planning Permission Without the Panic</h3>
+            <p>What I learnt from my first application: pre-app advice, neighbour objections and why patience is a strategy.</p>
+            <div class="card-foot">
+              <span class="meta">6 min read</span>
+              <a class="read-more" href="#">Read More <svg width="16" height="16" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+            </div>
+          </article>
+
+          <article class="post-card" data-category="ai">
+            <div><span class="tag tag--ai">AI in Property</span></div>
+            <h3>5 AI Tools I Use to Analyse a Deal in Minutes</h3>
+            <p>The exact tools and prompts I use to sense-check comparables, rental yields and refurbishment costs.</p>
+            <div class="card-foot">
+              <span class="meta">5 min read</span>
+              <a class="read-more" href="#">Read More <svg width="16" height="16" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+            </div>
+          </article>
+
+          <article class="post-card" data-category="investment">
+            <div><span class="tag tag--investment">Investment Journey</span></div>
+            <h3>Month One: Setting My Investment Goals</h3>
+            <p>Why I started, what I'm aiming for and the uncomfortable money conversations I had to have with myself first.</p>
+            <div class="card-foot">
+              <span class="meta">4 min read</span>
+              <a class="read-more" href="#">Read More <svg width="16" height="16" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+            </div>
+          </article>
+
+          <article class="post-card" data-category="property">
+            <div><span class="tag">Property Development</span></div>
+            <h3>Renovation Budget: Plan vs Reality</h3>
+            <p>A line-by-line look at where my refurbishment money actually went, and what I would do differently next time.</p>
+            <div class="card-foot">
+              <span class="meta">7 min read</span>
+              <a class="read-more" href="#">Read More <svg width="16" height="16" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+            </div>
+          </article>
+
+          <article class="post-card" data-category="ai">
+            <div><span class="tag tag--ai">AI in Property</span></div>
+            <h3>Can AI Really Spot a Good Deal?</h3>
+            <p>I put proptech to the test against my own gut instinct on ten real listings. The results surprised me.</p>
+            <div class="card-foot">
+              <span class="meta">6 min read</span>
+              <a class="read-more" href="#">Read More <svg width="16" height="16" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+            </div>
+          </article>
+
+          <article class="post-card" data-category="investment">
+            <div><span class="tag tag--investment">Investment Journey</span></div>
+            <h3>Mortgage Brokers, Deposits and Deep Breaths</h3>
+            <p>Everything I had to get in order before a lender would say yes, and the checklist I wish I'd had from day one.</p>
+            <div class="card-foot">
+              <span class="meta">5 min read</span>
+              <a class="read-more" href="#">Read More <svg width="16" height="16" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== LET'S CONNECT ===================== -->
+    <section class="section" id="contact" aria-labelledby="connect-title" style="padding-top:0">
+      <div class="container">
+        <div class="connect">
+          <h2 id="connect-title">Let's Connect</h2>
+          <p>
+            Got a question, a project or just curious too? Follow along for behind-the-scenes updates,
+            or drop me a line at <a class="email" href="mailto:hello@girlaimjustcurious.com">hello@girlaimjustcurious.com</a>.
+          </p>
+          <!-- Replace each href="#" with your profile link -->
+          <ul class="social-list">
+            <li><a href="#" aria-label="Instagram"><svg width="24" height="24" aria-hidden="true"><use href="#icon-instagram"/></svg></a></li>
+            <li><a href="#" aria-label="LinkedIn"><svg width="24" height="24" aria-hidden="true"><use href="#icon-linkedin"/></svg></a></li>
+            <li><a href="#" aria-label="TikTok"><svg width="24" height="24" aria-hidden="true"><use href="#icon-tiktok"/></svg></a></li>
+            <li><a href="#" aria-label="YouTube"><svg width="24" height="24" aria-hidden="true"><use href="#icon-youtube"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section class="section" id="about" aria-labelledby="about-title" style="padding-top:0">
+      <div class="container">
+        <span class="eyebrow">About me</span>
+        <h2 class="section-title" id="about-title">The woman behind the questions</h2>
+        <p class="about-intro">
+          Friends call me Laizah. I started this blog because I wanted a place to be honest about what
+          building in property really looks like, and to share how curiosity about AI is shaping the way I do it.
+        </p>
+
+        <div class="about-grid">
+          <div class="about-col about-col--journey">
+            <h3>The Journey</h3>
+            <p>
+              I run Laiza Properties, working across development projects and building a small team of
+              apprentices and assistants along the way. Every project has taught me something new, usually the hard way.
+            </p>
+            <ul>
+              <li>Managing renovations from first viewing to final snagging list</li>
+              <li>Navigating planning permission and building regulations</li>
+              <li>Bringing AI into day-to-day deal analysis and operations</li>
+              <li>Documenting the journey to my first investment property</li>
+            </ul>
+          </div>
+
+          <div class="about-col about-col--person">
+            <h3>The Person</h3>
+            <p>
+              Away from spreadsheets and site visits, I'm endlessly curious, a little bit competitive and
+              always learning something new.
+            </p>
+            <ul>
+              <li>Believer that good questions beat fast answers</li>
+              <li>Happiest with a notebook, a coffee and a new idea</li>
+              <li>Passionate about more women building wealth through property</li>
+              <li>Learning in public, mistakes included</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">Girl <span>AI'm Just Curious</span></div>
+      <ul class="footer-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <p class="copyright">&copy; <span id="year">2026</span> Victry. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // Mobile menu
+      var toggle = document.querySelector('.nav-toggle');
+      var links = document.getElementById('nav-links');
+
+      function setMenu(open) {
+        toggle.setAttribute('aria-expanded', String(open));
+        links.classList.toggle('is-open', open);
+      }
+
+      toggle.addEventListener('click', function () {
+        setMenu(toggle.getAttribute('aria-expanded') !== 'true');
+      });
+
+      links.addEventListener('click', function (e) {
+        if (e.target.closest('a')) setMenu(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') setMenu(false);
+      });
+
+      // Category filtering
+      var pills = document.querySelectorAll('.pill');
+      var cards = document.querySelectorAll('.post-card');
+      var status = document.querySelector('.filter-status');
+      var statusName = status.querySelector('[data-filter-name]');
+      var clear = status.querySelector('.filter-clear');
+
+      function applyFilter(category, label) {
+        pills.forEach(function (p) {
+          p.setAttribute('aria-pressed', String(p.dataset.filter === category));
+        });
+        cards.forEach(function (c) {
+          c.hidden = !!category && c.dataset.category !== category;
+        });
+        status.hidden = !category;
+        statusName.textContent = label || '';
+      }
+
+      pills.forEach(function (pill) {
+        pill.addEventListener('click', function () {
+          var active = pill.getAttribute('aria-pressed') === 'true';
+          applyFilter(active ? null : pill.dataset.filter, pill.textContent.trim());
+          if (!active) document.getElementById('blog').scrollIntoView();
+        });
+      });
+
+      clear.addEventListener('click', function () { applyFilter(null); });
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
