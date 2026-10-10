@@ -600,9 +600,24 @@
     .post-card:hover { transform: rotate(0) translateY(-6px); }
     .post-card[hidden] { display: none; }
 
-    .post-card.is-soon { border-style: dashed; border-top-style: solid; }
-    .post-card.is-soon .card-foot { justify-content: flex-start; }
-    .soon-label { font-size: 1.6rem; color: var(--heading); }
+    .blog-empty {
+      margin: 0;
+      padding: 32px 20px;
+      text-align: center;
+      font-size: 1.9rem;
+      color: var(--heading);
+      border: 3px dashed var(--border);
+      border-radius: var(--radius);
+    }
+
+    .post-grid:not(:empty) + .blog-empty { display: none; }
+
+    /* Category pills stay inert until there are posts to filter */
+    .pill:disabled { cursor: default; }
+    .pill:disabled:hover { transform: none; }
+    .pill:nth-child(1):disabled:hover { transform: rotate(-2.5deg); }
+    .pill:nth-child(2):disabled:hover { transform: rotate(1.5deg); }
+    .pill:nth-child(3):disabled:hover { transform: rotate(-1deg); }
 
     .post-card[data-category="ai"] { --stripe: var(--orange); }
     .post-card[data-category="investment"] { --stripe: var(--coral); }
@@ -1092,14 +1107,11 @@
       <div class="container featured-wrap">
         <article class="featured">
           <span class="start-here hand" aria-hidden="true">coming soon</span>
-          <div><span class="tag tag--investment">Investment Journey</span></div>
-          <h2 id="featured-title">My first posts are on the way.</h2>
+          <h2 id="featured-title">Stories are on the way.</h2>
           <p>
-            I'm writing up the hunt for my first investment property, with £150,000 raised so far, plus
-            what I've learnt in property development and how AI is changing the way I work. They'll land
-            here soon.
+            I'm still deciding what to share first. In the meantime, you can follow along on Instagram.
           </p>
-          <a class="read-more" href="https://www.instagram.com/propertywithvic/" target="_blank" rel="noopener">Follow along on Instagram while you wait
+          <a class="read-more" href="https://www.instagram.com/propertywithvic/" target="_blank" rel="noopener">Follow along on Instagram
             <svg width="18" height="18" aria-hidden="true"><use href="#icon-arrow"/></svg>
           </a>
         </article>
@@ -1121,40 +1133,11 @@
           </p>
         </div>
 
-        <div class="post-grid">
-          <!-- To add a post, copy an <article> block, remove the "is-soon" class, and set
-               data-category to property, ai or investment (colours, icon and filtering follow). -->
-
-          <article class="post-card is-soon" data-category="property">
-            <span class="card-icon" aria-hidden="true"><svg width="22" height="22"><use href="#icon-property"/></svg></span>
-            <div><span class="tag">Property Development</span></div>
-            <h3>Building and renovating</h3>
-            <p>Renovations, planning permission and what two years of development have taught me.</p>
-            <div class="card-foot">
-              <span class="soon-label hand">coming soon</span>
-            </div>
-          </article>
-
-          <article class="post-card is-soon" data-category="ai">
-            <span class="card-icon" aria-hidden="true"><svg width="22" height="22"><use href="#icon-ai"/></svg></span>
-            <div><span class="tag tag--ai">AI in Property</span></div>
-            <h3>AI and the property sector</h3>
-            <p>How I use AI day to day, and how I think it could change the property sector as a whole.</p>
-            <div class="card-foot">
-              <span class="soon-label hand">coming soon</span>
-            </div>
-          </article>
-
-          <article class="post-card is-soon" data-category="investment">
-            <span class="card-icon" aria-hidden="true"><svg width="22" height="22"><use href="#icon-investment"/></svg></span>
-            <div><span class="tag tag--investment">Investment Journey</span></div>
-            <h3>The hunt for my first property</h3>
-            <p>The hunt for my first UK investment property, with £150,000 raised so far.</p>
-            <div class="card-foot">
-              <span class="soon-label hand">coming soon</span>
-            </div>
-          </article>
-        </div>
+        <!-- To add a post: put an <article class="post-card" data-category="property|ai|investment">
+             inside .post-grid (copy the markup from git history or ask Claude), then delete the
+             .blog-empty note below. -->
+        <div class="post-grid"></div>
+        <p class="blog-empty hand">Nothing here yet. Check back soon.</p>
       </div>
     </section>
 
@@ -1358,6 +1341,9 @@
       });
 
       clear.addEventListener('click', function () { applyFilter(null); });
+
+      // Nothing to filter yet: leave the category pills as plain labels
+      if (!cards.length) pills.forEach(function (p) { p.disabled = true; });
 
       document.getElementById('year').textContent = new Date().getFullYear();
     })();
